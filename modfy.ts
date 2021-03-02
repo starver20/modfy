@@ -50,6 +50,17 @@ function isValid(
         console.log('Operation not possible');
         return;
       }
+    } else if (currentTransform.state === 'Insert') {
+      let type = currentTransform.type;
+      // let allFiles = stale[type]!;
+      let fileObj = currentTransform.fileObj!;
+      if (stale[type] != undefined) {
+        stale[type]!.push(fileObj);
+      } else {
+        // console.log(stale[type]);
+        console.log(fileObj);
+        stale[type] = [fileObj];
+      }
     }
   }
   if (JSON.stringify(stale) === JSON.stringify(latest)) {
